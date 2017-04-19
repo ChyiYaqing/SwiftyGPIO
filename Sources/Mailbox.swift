@@ -175,7 +175,7 @@ public struct MailBox {
         unlink(filename)
 
         //makedev is a macro not imported by Swift that resolves to gnu_dev_makedev
-        if mknod(filename, S_IFCHR|0600, gnu_dev_makedev(100, 0)) < 0 {
+        if mknod(filename, S_IFCHR|0600, __dev_t(100, 0)) < 0 {
             perror("Failed to create mailbox device\n")
             return -1
         }
